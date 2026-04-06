@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yannis — Finance PhD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #111;
+      --white: #fafaf8;
+      --accent: #1a1a1a;
+      --mid: #555;
+      --light: #e8e8e4;
+      --nav-height: 58px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      background: rgba(250, 250, 248, 0.97);
+      color: var(--black);
+      z-index: 100;
+      transition: background 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(17, 17, 17, 0.97);
+      color: var(--white);
+      box-shadow: none;
+    }
+
+    .nav-name {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: inherit;
+      text-decoration: none;
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 1; }
+
+    /* ─── HERO ─── */
+    .hero {
+      height: 100vh;
+      min-height: 600px;
+      background: var(--black);
+      display: flex;
+      align-items: flex-end;
+      padding: 0 48px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle textured dark background */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 60%, rgba(60,60,60,0.5) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 30%, rgba(40,40,40,0.4) 0%, transparent 50%),
+        #111;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+
+    .hero-content h1 {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .hero-content .subtitle {
+      font-size: 0.88rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(250,250,248,0.5);
+      margin-bottom: 28px;
+    }
+
+    .hero-meta {
+      color: rgba(250,250,248,0.7);
+      font-size: 0.9rem;
+      line-height: 2;
+    }
+
+    .hero-meta a {
+      color: rgba(250,250,248,0.9);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ─── MAIN CONTENT ─── */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 88px 48px 120px;
+    }
+
+    /* ─── SECTION HEADERS ─── */
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 28px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--light);
+    }
+
+    section { margin-bottom: 72px; }
+
+    /* ─── RESEARCH INTERESTS ─── */
+    .interests {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.18rem;
+      color: var(--accent);
+      line-height: 1.6;
+    }
+
+    /* ─── PAPERS ─── */
+    .paper-list { display: flex; flex-direction: column; gap: 36px; }
+
+    .paper {
+      padding-left: 20px;
+      border-left: 2px solid var(--light);
+      transition: border-color 0.2s;
+    }
+
+    .paper:hover { border-color: var(--black); }
+
+    .paper-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.08rem;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+      line-height: 1.4;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .paper-title:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    .paper-venue {
+      font-size: 0.84rem;
+      color: var(--mid);
+      margin-bottom: 4px;
+    }
+
+    .paper-venue em {
+      font-style: normal;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .paper-award {
+      font-size: 0.78rem;
+      color: #8a6a2a;
+      letter-spacing: 0.02em;
+      margin-top: 4px;
+    }
+
+    .paper-links {
+      margin-top: 8px;
+      display: flex;
+      gap: 16px;
+    }
+
+    .paper-links a {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--mid);
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 1px;
+      transition: color 0.2s;
+    }
+
+    .paper-links a:hover { color: var(--black); }
+
+    /* WIP papers — lighter treatment */
+    .wip-list { display: flex; flex-direction: column; gap: 22px; }
+
+    .wip-item .paper-title {
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      text-align: center;
+      padding: 40px 48px;
+      font-size: 0.78rem;
+      color: var(--mid);
+      border-top: 1px solid var(--light);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 640px) {
+      nav { padding: 0 24px; }
+      .hero { padding: 0 24px 56px; }
+      main { padding: 64px 24px 80px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a href="#" class="nav-name">Yannis Skrastins</a>
+    <ul class="nav-links">
+      <li><a href="#research">Research</a></li>
+      <li><a href="https://drive.google.com/your-cv-link" target="_blank">CV</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <p class="subtitle">Finance PhD Candidate · Stockholm School of Economics</p>
+      <h1>Yannis<br>Skrastins</h1>
+      <div class="hero-meta">
+        CV: <a href="https://drive.google.com/your-cv-link" target="_blank">link</a><br>
+        PhD Candidate in Finance<br>
+        Stockholm School of Economics<br>
+        Department of Finance<br><br>
+        E: yannis [AT] hhs [DOT] se
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main id="research">
+
+    <!-- Research Interests -->
+    <section>
+      <p class="section-label">Research Interests</p>
+      <p class="interests">
+        Asset Pricing · Physical Climate Risk · Information Frictions · Supply Chain Networks · Behavioral Finance
+      </p>
+    </section>
+
+    <!-- Working Papers -->
+    <section>
+      <p class="section-label">Working Papers</p>
+      <div class="paper-list">
+
+        <div class="paper">
+          <a class="paper-title" href="https://ssrn.com/abstract=YOURPAPER" target="_blank">
+            Measuring and Pricing Physical Climate Risk
+          </a>
+          <p class="paper-venue">
+            Solo-authored
+          </p>
+          <p class="paper-award">
+            🏆 Best Paper — Otago Research Symposium
+          </p>
+          <div class="paper-links">
+            <a href="https://ssrn.com/abstract=YOURPAPER" target="_blank">SSRN</a>
+          </div>
+        </div>
+
+        <div class="paper">
+          <a class="paper-title" href="#" target="_blank">
+            Persistent Return Comovement After Supply Chain Dissolution
+          </a>
+          <p class="paper-venue">
+            Work in progress
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Work in Progress -->
+    <section>
+      <p class="section-label">Work in Progress</p>
+      <div class="wip-list">
+
+        <div class="wip-item paper">
+          <span class="paper-title">Latent Supply Chain Links and Asset Pricing Anomalies</span>
+          <p class="paper-venue">with [Coauthor Names]</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 Yannis · Stockholm School of Economics
+  </footer>
+
+  <!-- SCROLL NAVBAR SCRIPT -->
+  <script>
+    const navbar = document.getElementById('navbar');
+    const THRESHOLD = 80; // px before colour flips
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > THRESHOLD) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
