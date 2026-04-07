@@ -196,6 +196,12 @@
       margin-top: 3px;
     }
 
+    .meta-row-indent {
+      padding-left: 26px;
+      line-height: 1.4;
+      margin-bottom: 0;
+    }
+
     @media (max-width: 640px) {
       .hero-content { flex-direction: column; gap: 32px; }
       .hero-portrait { width: 280px; }
@@ -345,10 +351,12 @@
             National University of Singapore
           </div>
           <div style="margin-top:1em;">
-            <div class="meta-row">
+            <div class="meta-row" style="margin-bottom:0;">
               <img src="icon_map.png" alt="" class="meta-icon">
-              <span>Innovation 4.0<br>3 Research Link<br>Singapore 117602</span>
+              <span>Innovation 4.0</span>
             </div>
+            <div class="meta-row-indent">3 Research Link</div>
+            <div class="meta-row-indent" style="margin-bottom:6px;">Singapore 117602</div>
             <div class="meta-row">
               <img src="icon_email.png" alt="" class="meta-icon">
               <a href="mailto:yyuan@nus.edu.sg">yyuan@nus.edu.sg</a>
