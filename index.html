@@ -202,11 +202,6 @@
       margin-bottom: 0;
     }
 
-    @media (max-width: 640px) {
-      .hero-content { flex-direction: column; gap: 32px; }
-      .hero-portrait { width: 280px; }
-    }
-
     /* ─── MAIN CONTENT ─── */
     main {
       max-width: 780px;
@@ -314,11 +309,93 @@
       text-transform: uppercase;
     }
 
+    /* ─── HAMBURGER BUTTON ─── */
+    .nav-burger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: inherit;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    /* ─── SIDEBAR OVERLAY ─── */
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 200;
+    }
+    .nav-overlay.open { display: block; }
+
+    /* ─── SIDEBAR ─── */
+    .nav-sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 240px;
+      height: 100%;
+      background: var(--white);
+      z-index: 300;
+      padding: 20px 28px;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(-100%);
+      transition: transform 0.28s ease;
+    }
+    .nav-sidebar.open { transform: translateX(0); }
+
+    .nav-sidebar-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      align-self: flex-end;
+      color: var(--black);
+      margin-bottom: 32px;
+      padding: 4px;
+    }
+
+    .nav-sidebar a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--light);
+      opacity: 0.75;
+    }
+    .nav-sidebar a:hover { opacity: 1; }
+
     /* ─── RESPONSIVE ─── */
-    @media (max-width: 640px) {
-      nav { padding: 0 24px; }
-      .hero { padding: 0 24px 56px; }
-      main { padding: 64px 24px 80px; }
+    @media (max-width: 768px) {
+      /* Navbar */
+      nav { padding: 0 20px; }
+      .nav-burger { display: block; }
+      .nav-links { display: none; }
+      .nav-name-text { display: none; }
+      .nav-logo { height: 44px; }
+
+      /* Hero */
+      .hero { padding: calc(var(--nav-height) + 24px) 24px 32px; }
+      .hero-content { flex-direction: column; gap: 24px; }
+      .hero-portrait { width: min(260px, 80vw); }
+      .hero-text h1 { font-size: clamp(1.8rem, 7vw, 2.4rem); }
+      .hero-meta { font-size: 0.95rem; }
+
+      /* Main */
+      main { padding: 48px 24px 80px; }
+
+      /* Papers */
+      .paper { padding-left: 14px; }
+      .section-label { font-size: 0.8rem; }
+
+      /* Footer */
+      footer { padding: 32px 24px; font-size: 0.82rem; }
     }
   </style>
 </head>
@@ -328,12 +405,21 @@
   <nav id="navbar">
     <a href="#" class="nav-name">
       <img src="logo_menu.png" alt="" class="nav-logo">
-      Yannis Yuan
+      <span class="nav-name-text">Yannis Yuan</span>
     </a>
     <ul class="nav-links">
       <li><a href="#research">Research</a></li>
       <li><a href="CV_Yannis_Yuan.pdf" target="_blank">CV</a></li>
     </ul>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu">&#9776;</button>
+  </nav>
+
+  <!-- MOBILE SIDEBAR -->
+  <div class="nav-overlay" id="navOverlay"></div>
+  <nav class="nav-sidebar" id="navSidebar">
+    <button class="nav-sidebar-close" id="navClose" aria-label="Close menu">&#10005;</button>
+    <a href="#research">Research</a>
+    <a href="CV_Yannis_Yuan.pdf" target="_blank">CV</a>
   </nav>
 
   <!-- HERO -->
@@ -425,15 +511,25 @@
   <!-- SCROLL NAVBAR SCRIPT -->
   <script>
     const navbar = document.getElementById('navbar');
-    const THRESHOLD = 80; // px before colour flips
+    const THRESHOLD = 80;
 
     window.addEventListener('scroll', () => {
-      if (window.scrollY > THRESHOLD) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
+      navbar.classList.toggle('scrolled', window.scrollY > THRESHOLD);
     }, { passive: true });
+
+    // Sidebar
+    const burger   = document.getElementById('navBurger');
+    const sidebar  = document.getElementById('navSidebar');
+    const overlay  = document.getElementById('navOverlay');
+    const closeBtn = document.getElementById('navClose');
+
+    function openSidebar()  { sidebar.classList.add('open');    overlay.classList.add('open'); }
+    function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('open'); }
+
+    burger.addEventListener('click', openSidebar);
+    closeBtn.addEventListener('click', closeSidebar);
+    overlay.addEventListener('click', closeSidebar);
+    sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSidebar));
   </script>
 
 </body>
