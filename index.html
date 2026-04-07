@@ -316,10 +316,18 @@
       background: none;
       border: none;
       cursor: pointer;
-      padding: 4px;
+      padding: 0;
       color: inherit;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       line-height: 1;
+      width: 36px;
+      height: 36px;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.35s ease;
+    }
+    .nav-burger.open {
+      transform: rotate(90deg);
     }
 
     /* ─── SIDEBAR OVERLAY ─── */
@@ -351,14 +359,19 @@
     .nav-sidebar.open { transform: translateX(0); }
 
     .nav-sidebar-close {
-      background: none;
+      background: #444;
       border: none;
       cursor: pointer;
-      font-size: 1.2rem;
-      align-self: flex-end;
+      font-size: 1rem;
+      align-self: flex-start;
       color: var(--white);
       margin-bottom: 32px;
-      padding: 4px;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
 
     .nav-sidebar a {
@@ -378,8 +391,8 @@
     /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
       /* Navbar */
-      nav { padding: 0 20px; flex-direction: row-reverse; }
-      .nav-burger { display: block; }
+      nav { padding: 0 20px; }
+      .nav-burger { display: flex; }
       .nav-links { display: none; }
       .nav-name-text { display: none; }
       .nav-logo { height: 44px; }
@@ -407,6 +420,7 @@
 
   <!-- NAVBAR -->
   <nav id="navbar">
+    <button class="nav-burger" id="navBurger" aria-label="Open menu">&#9776;</button>
     <a href="#" class="nav-name">
       <img src="logo_menu.png" alt="" class="nav-logo">
       <span class="nav-name-text">Yannis Yuan</span>
@@ -415,7 +429,6 @@
       <li><a href="#research">Research</a></li>
       <li><a href="CV_Yannis_Yuan.pdf" target="_blank">CV</a></li>
     </ul>
-    <button class="nav-burger" id="navBurger" aria-label="Open menu">&#9776;</button>
   </nav>
 
   <!-- MOBILE SIDEBAR -->
@@ -527,8 +540,18 @@
     const overlay  = document.getElementById('navOverlay');
     const closeBtn = document.getElementById('navClose');
 
-    function openSidebar()  { sidebar.classList.add('open');    overlay.classList.add('open'); }
-    function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('open'); }
+    function openSidebar() {
+      sidebar.classList.add('open');
+      overlay.classList.add('open');
+      burger.classList.add('open');
+      burger.innerHTML = '&#10005;';
+    }
+    function closeSidebar() {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('open');
+      burger.classList.remove('open');
+      burger.innerHTML = '&#9776;';
+    }
 
     burger.addEventListener('click', openSidebar);
     closeBtn.addEventListener('click', closeSidebar);
