@@ -292,13 +292,10 @@
 
     .paper-links a:hover { color: var(--black); }
 
-    /* WIP papers — lighter treatment */
+    /* WIP papers */
     .wip-list { display: flex; flex-direction: column; gap: 22px; }
 
-    .wip-item .paper-title {
-      font-size: 1rem;
-      font-weight: 400;
-    }
+    .wip-item .paper-title:hover { text-decoration: none; }
 
     /* ─── FOOTER ─── */
     footer {
@@ -358,7 +355,7 @@
             </div>
             <div class="meta-row" style="margin-top:6px;">
               <img src="icon_cv.png" alt="" class="meta-icon">
-              <a href="CV_Yannis_Yuan.pdf" target="_blank">Download PDF</a>
+              <a href="CV_Yannis_Yuan.pdf" target="_blank">Curriculum Vitae</a>
             </div>
           </div>
         </div>
@@ -403,7 +400,6 @@
     <section>
       <p class="section-label">Work in Progress</p>
       <div class="wip-list">
-
         <div class="wip-item paper">
           <span class="paper-title">Climate Change Adaptation and Innovation</span>
           <p class="paper-venue"><!-- with [Coauthor Names] --></p>
