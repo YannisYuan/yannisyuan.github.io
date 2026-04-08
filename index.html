@@ -321,6 +321,7 @@
       height: 36px;
       position: relative;
       flex-shrink: 0;
+      z-index: 400;
     }
 
     .nav-burger .b-open,
@@ -343,6 +344,7 @@
     /* open: ☰ spins away, ✕ spins in */
     .nav-burger.open .b-open  { opacity: 0; transform: rotate(90deg); }
     .nav-burger.open .b-close { opacity: 1; transform: rotate(0deg); }
+    .nav-burger.open { color: var(--white); }
 
     /* ─── SIDEBAR OVERLAY ─── */
     .nav-overlay {
@@ -372,21 +374,7 @@
     }
     .nav-sidebar.open { transform: translateX(0); }
 
-    .nav-sidebar-close {
-      background: #2a2a2a;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-      align-self: flex-start;
-      color: var(--white);
-      margin-bottom: 32px;
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
+    .nav-sidebar-close { display: none; }
 
     .nav-sidebar a {
       font-size: 0.95rem;
@@ -555,8 +543,6 @@
     const burger   = document.getElementById('navBurger');
     const sidebar  = document.getElementById('navSidebar');
     const overlay  = document.getElementById('navOverlay');
-    const closeBtn = document.getElementById('navClose');
-
     function openSidebar() {
       sidebar.classList.add('open');
       overlay.classList.add('open');
@@ -568,8 +554,9 @@
       burger.classList.remove('open');
     }
 
-    burger.addEventListener('click', openSidebar);
-    closeBtn.addEventListener('click', closeSidebar);
+    burger.addEventListener('click', () => {
+      burger.classList.contains('open') ? closeSidebar() : openSidebar();
+    });
     overlay.addEventListener('click', closeSidebar);
     sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSidebar));
   </script>
