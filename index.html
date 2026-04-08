@@ -390,6 +390,7 @@
       transition: transform 0.28s ease;
     }
     .nav-sidebar.open { transform: translateX(0); }
+    .nav-sidebar.open .nav-sidebar-close { transform: rotate(0deg); }
 
     .nav-sidebar-close {
       position: absolute;
@@ -410,6 +411,8 @@
       color: var(--white);
       z-index: 400;
       margin-bottom: 20px;
+      transform: rotate(-90deg);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .nav-sidebar a {
