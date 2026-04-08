@@ -406,7 +406,7 @@
       justify-content: center;
       font-size: 1.4rem;
       line-height: 1;
-      color: inherit;
+      color: var(--white);
       z-index: 400;
       margin-bottom: 20px;
     }
@@ -618,6 +618,7 @@
     const burger   = document.getElementById('navBurger');
     const sidebar  = document.getElementById('navSidebar');
     const overlay  = document.getElementById('navOverlay');
+    const closeBtn = document.getElementById('navClose');
     function openSidebar() {
       sidebar.classList.add('open');
       overlay.classList.add('open');
@@ -632,6 +633,7 @@
     burger.addEventListener('click', () => {
       burger.classList.contains('open') ? closeSidebar() : openSidebar();
     });
+    closeBtn.addEventListener('click', closeSidebar);
     overlay.addEventListener('click', closeSidebar);
     sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSidebar));
   </script>
