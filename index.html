@@ -110,6 +110,13 @@
   font-style: normal;
 }
 
+  @font-face {
+    font-family: 'KangxiBlack';
+    src: url('fonts/Kangxi-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+  }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -162,6 +169,21 @@
       display: flex;
       align-items: center;
       gap: 20px;
+    }
+
+    .nav-chinese {
+      font-family: 'KangxiBlack', serif;
+      font-size: 1.4rem;
+      color: inherit;
+      line-height: 1;
+    }
+
+    .nav-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
     }
 
     .nav-logo {
@@ -511,6 +533,7 @@
       .nav-burger { display: flex; }
       .nav-links { display: none; }
       .nav-name-text { display: none; }
+      .nav-center { display: none; }
       .nav-logo { height: 44px; }
 
       /* Hero */
@@ -541,10 +564,13 @@
       <span class="b-close">&#10005;</span>
     </button>
     <a href="#" class="nav-name">
-      <img src="logo_menu_1.png" alt="" class="nav-logo nav-logo-light">
-      <img src="logo_menu_2.png" alt="" class="nav-logo nav-logo-dark">
+      <span class="nav-chinese">袁永熙</span>
       <span class="nav-name-text">Yannis Yuan</span>
     </a>
+    <div class="nav-center">
+      <img src="logo_menu_1.png" alt="" class="nav-logo nav-logo-light">
+      <img src="logo_menu_2.png" alt="" class="nav-logo nav-logo-dark">
+    </div>
     <ul class="nav-links">
       <li><a href="#research">Research</a></li>
       <li><a href="CV_Yannis_Yuan.pdf" target="_blank">CV</a></li>
