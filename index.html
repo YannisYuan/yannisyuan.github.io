@@ -288,7 +288,8 @@
       font-style: italic;
       font-weight: 700;
       color: #BF013F;
-      text-decoration: none;
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
     .paper-journal-detail {
@@ -341,7 +342,6 @@
       height: 36px;
       position: relative;
       flex-shrink: 0;
-      z-index: 400;
     }
 
     .nav-burger .b-open,
@@ -436,7 +436,7 @@
     /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
       /* Navbar */
-      nav { padding: 0 20px; justify-content: flex-start; gap: 16px; }
+      nav { padding: 0 20px; }
       .nav-burger { display: flex; }
       .nav-links { display: none; }
       .nav-name-text { display: none; }
@@ -470,7 +470,8 @@
       <span class="b-close">&#10005;</span>
     </button>
     <a href="#" class="nav-name">
-      <img src="logo_menu.png" alt="" class="nav-logo">
+      <img src="logo_menu_1.png" alt="" class="nav-logo nav-logo-light">
+      <img src="logo_menu_2.png" alt="" class="nav-logo nav-logo-dark">
       <span class="nav-name-text">Yannis Yuan</span>
     </a>
     <ul class="nav-links">
