@@ -195,12 +195,17 @@
 
     .nav-links a:hover { opacity: 1; }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
     /* ─── NAV SEARCH ─── */
     .nav-search {
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-left: 24px;
     }
 
     .nav-search-input {
@@ -603,6 +608,7 @@
       nav { padding: 0 20px; }
       .nav-burger { display: flex; }
       .nav-links { display: none; }
+      .nav-right { display: none; }
       .nav-name-text { display: none; }
       .nav-center { display: none; }
       .nav-logo { height: 44px; }
@@ -644,6 +650,7 @@
       <img src="logo_menu_1.png" alt="" class="nav-logo nav-logo-light">
       <img src="logo_menu_2.png" alt="" class="nav-logo nav-logo-dark">
     </div>
+    <div class="nav-right">
     <ul class="nav-links">
       <li><a href="#research">Research</a></li>
       <li><a href="CV_Yannis_Yuan.pdf" target="_blank">CV</a></li>
@@ -653,6 +660,7 @@
       <button class="nav-search-btn" id="navSearchBtn" aria-label="Toggle search">
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
       </button>
+    </div>
     </div>
   </nav>
 
