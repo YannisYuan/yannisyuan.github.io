@@ -5,67 +5,94 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Yannis Yuan</title>
   <link rel="icon" type="image/png" href="logo_tab.png">
-  <link rel="preload" href="fonts/Kangxi-Black.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="preload" href="fonts/PlayfairDisplay-SemiBold.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="preload" href="fonts/LegacySans-Book.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="preload" href="fonts/LegacySans-Medium.ttf" as="font" type="font/ttf" crossorigin>
   <style>
   @font-face {
     font-family: 'PlayfairDisplay';
-    src: url('fonts/PlayfairDisplay-Regular.woff2') format('woff2'),
-         url('fonts/PlayfairDisplay-Regular.ttf') format('truetype');
-    font-weight: 400; font-style: normal; font-display: swap;
+    src: url('fonts/PlayfairDisplay-Regular.ttf') format('truetype');
+    font-weight: 400; font-style: normal;
   }
   @font-face {
     font-family: 'PlayfairDisplay';
-    src: url('fonts/PlayfairDisplay-Italic.woff2') format('woff2'),
-         url('fonts/PlayfairDisplay-Italic.ttf') format('truetype');
-    font-weight: 400; font-style: italic; font-display: swap;
+    src: url('fonts/PlayfairDisplay-Italic.ttf') format('truetype');
+    font-weight: 400; font-style: italic;
   }
   @font-face {
     font-family: 'PlayfairDisplay';
-    src: url('fonts/PlayfairDisplay-Medium.woff2') format('woff2'),
-         url('fonts/PlayfairDisplay-Medium.ttf') format('truetype');
-    font-weight: 500; font-style: normal; font-display: swap;
+    src: url('fonts/PlayfairDisplay-Medium.ttf') format('truetype');
+    font-weight: 500; font-style: normal;
   }
   @font-face {
     font-family: 'PlayfairDisplay';
-    src: url('fonts/PlayfairDisplay-SemiBold.woff2') format('woff2'),
-         url('fonts/PlayfairDisplay-SemiBold.ttf') format('truetype');
-    font-weight: 600; font-style: normal; font-display: swap;
+    src: url('fonts/PlayfairDisplay-MediumItalic.ttf') format('truetype');
+    font-weight: 500; font-style: italic;
+  }
+  @font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('fonts/PlayfairDisplay-SemiBold.ttf') format('truetype');
+    font-weight: 600; font-style: normal;
+  }
+  @font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('fonts/PlayfairDisplay-SemiBoldItalic.ttf') format('truetype');
+    font-weight: 600; font-style: italic;
+  }
+  @font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('fonts/PlayfairDisplay-Bold.ttf') format('truetype');
+    font-weight: 700; font-style: normal;
+  }
+  @font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('fonts/PlayfairDisplay-BoldItalic.ttf') format('truetype');
+    font-weight: 700; font-style: italic;
+  }
+  @font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('fonts/PlayfairDisplay-ExtraBold.ttf') format('truetype');
+    font-weight: 800; font-style: normal;
+  }
+  @font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('fonts/PlayfairDisplay-ExtraBoldItalic.ttf') format('truetype');
+    font-weight: 800; font-style: italic;
+  }
+  @font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('fonts/PlayfairDisplay-Black.ttf') format('truetype');
+    font-weight: 900; font-style: normal;
+  }
+  @font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('fonts/PlayfairDisplay-BlackItalic.ttf') format('truetype');
+    font-weight: 900; font-style: italic;
   }
 
   @font-face {
     font-family: 'LegacySans';
-    src: url('fonts/LegacySans-Book.woff2') format('woff2'),
-         url('fonts/LegacySans-Book.ttf') format('truetype');
-    font-weight: 400; font-style: normal; font-display: swap;
+    src: url('fonts/LegacySans-Book.ttf') format('truetype');
+    font-weight: 400; font-style: normal;
   }
   @font-face {
     font-family: 'LegacySans';
-    src: url('fonts/LegacySans-BookItalic.woff2') format('woff2'),
-         url('fonts/LegacySans-BookItalic.ttf') format('truetype');
-    font-weight: 400; font-style: italic; font-display: swap;
+    src: url('fonts/LegacySans-BookItalic.ttf') format('truetype');
+    font-weight: 400; font-style: italic;
   }
   @font-face {
     font-family: 'LegacySans';
-    src: url('fonts/LegacySans-Medium.woff2') format('woff2'),
-         url('fonts/LegacySans-Medium.ttf') format('truetype');
-    font-weight: 500; font-style: normal; font-display: swap;
+    src: url('fonts/LegacySans-Medium.ttf') format('truetype');
+    font-weight: 500; font-style: normal;
   }
   @font-face {
     font-family: 'LegacySans';
-    src: url('fonts/LegacySans-Ultra.woff2') format('woff2'),
-         url('fonts/LegacySans-Ultra.ttf') format('truetype');
-    font-weight: 700; font-style: normal; font-display: swap;
+    src: url('fonts/LegacySans-MediumItalic.ttf') format('truetype');
+    font-weight: 500; font-style: italic;
+  }
+  @font-face {
+    font-family: 'LegacySans';
+    src: url('fonts/LegacySans-Ultra.ttf') format('truetype');
+    font-weight: 700; font-style: normal;
   }
 
-  @font-face {
-    font-family: 'KangxiBlack';
-    src: url('fonts/Kangxi-Black.woff2') format('woff2'),
-         url('fonts/Kangxi-Black.ttf') format('truetype');
-    font-weight: 900; font-style: normal; font-display: swap;
-  }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -122,10 +149,9 @@
     }
 
     .nav-chinese {
-      font-family: 'KangxiBlack', serif;
-      font-size: 2.0rem;
-      color: inherit;
-      line-height: 1;
+      height: 36px;
+      width: auto;
+      display: block;
     }
 
     .nav-center {
@@ -487,7 +513,7 @@
       .nav-name-text { display: none; }
       .nav-center { display: none; }
       .nav-logo { height: 44px; }
-      .nav-chinese { font-size: 1.4rem; }
+      .nav-chinese { height: 28px; }
 
       /* Hero */
       .hero { padding: calc(var(--nav-height) + 24px) 24px 32px; }
@@ -517,7 +543,7 @@
       <span class="b-close">&#10005;</span>
     </button>
     <a href="#" class="nav-name">
-      <span class="nav-chinese">袁永熙</span>
+      <img src="logo_name.png" alt="袁永熙" class="nav-chinese">
       <span class="nav-name-text">Yannis Yuan</span>
     </a>
     <div class="nav-center">
