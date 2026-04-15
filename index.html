@@ -195,6 +195,59 @@
 
     .nav-links a:hover { opacity: 1; }
 
+    /* ─── NAV SEARCH ─── */
+    .nav-search {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: 24px;
+    }
+
+    .nav-search-input {
+      width: 0;
+      overflow: hidden;
+      border: none;
+      border-bottom: 1px solid currentColor;
+      background: transparent;
+      color: inherit;
+      font-size: 0.9rem;
+      font-family: inherit;
+      padding: 2px 0;
+      outline: none;
+      opacity: 0;
+      transition: width 0.25s ease, opacity 0.25s ease;
+    }
+
+    .nav-search-input.open {
+      width: 140px;
+      opacity: 1;
+    }
+
+    .nav-search-input::placeholder { opacity: 0.5; color: inherit; }
+
+    .nav-search-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: inherit;
+      opacity: 0.75;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      transition: opacity 0.1s;
+    }
+
+    .nav-search-btn:hover { opacity: 1; }
+
+    .nav-search-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+
     /* ─── HERO ─── */
     .hero {
       background: var(--white);
@@ -595,6 +648,12 @@
       <li><a href="#research">Research</a></li>
       <li><a href="CV_Yannis_Yuan.pdf" target="_blank">CV</a></li>
     </ul>
+    <div class="nav-search">
+      <input type="search" class="nav-search-input" id="navSearchInput" placeholder="Search…" aria-label="Search">
+      <button class="nav-search-btn" id="navSearchBtn" aria-label="Toggle search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+      </button>
+    </div>
   </nav>
 
   <!-- MOBILE SIDEBAR -->
@@ -771,6 +830,28 @@
     closeBtn.addEventListener('click', closeSidebar);
     overlay.addEventListener('click', closeSidebar);
     sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSidebar));
+
+    // Search
+    const searchBtn   = document.getElementById('navSearchBtn');
+    const searchInput = document.getElementById('navSearchInput');
+    searchBtn.addEventListener('click', () => {
+      const isOpen = searchInput.classList.toggle('open');
+      if (isOpen) { searchInput.focus(); }
+      else { searchInput.value = ''; }
+    });
+    searchInput.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        searchInput.classList.remove('open');
+        searchInput.value = '';
+        searchBtn.focus();
+      }
+    });
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.nav-search')) {
+        searchInput.classList.remove('open');
+        searchInput.value = '';
+      }
+    });
   </script>
 
 </body>
