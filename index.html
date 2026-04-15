@@ -149,10 +149,14 @@
     }
 
     .nav-chinese {
-      height: 36px;
+      height: 72px;
       width: auto;
       display: block;
     }
+
+    .nav-chinese-dark  { display: none; }
+    nav.scrolled .nav-chinese-light { display: none; }
+    nav.scrolled .nav-chinese-dark  { display: block; }
 
     .nav-center {
       position: absolute;
@@ -513,7 +517,7 @@
       .nav-name-text { display: none; }
       .nav-center { display: none; }
       .nav-logo { height: 44px; }
-      .nav-chinese { height: 28px; }
+      .nav-chinese { height: 48px; }
 
       /* Hero */
       .hero { padding: calc(var(--nav-height) + 24px) 24px 32px; }
@@ -543,7 +547,8 @@
       <span class="b-close">&#10005;</span>
     </button>
     <a href="#" class="nav-name">
-      <img src="logo_name.png" alt="袁永熙" class="nav-chinese">
+      <img src="logo_name_1.png" alt="袁永熙" class="nav-chinese nav-chinese-light">
+      <img src="logo_name_2.png" alt="袁永熙" class="nav-chinese nav-chinese-dark">
       <span class="nav-name-text">Yannis Yuan</span>
     </a>
     <div class="nav-center">
