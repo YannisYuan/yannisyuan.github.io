@@ -300,6 +300,61 @@
       color: rgba(17,17,17,0.5);
     }
 
+    /* ─── MOBILE SEARCH ─── */
+    .nav-search-mobile-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: inherit;
+      padding: 0;
+      align-items: center;
+      opacity: 0.75;
+      transition: opacity 0.1s;
+    }
+
+    .nav-search-mobile-btn:hover { opacity: 1; }
+
+    .nav-search-mobile-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .nav-search-mobile-bar {
+      display: none;
+      position: fixed;
+      top: var(--nav-height);
+      left: 0; right: 0;
+      background: rgba(250,250,248,0.97);
+      padding: 10px 20px;
+      border-bottom: 1px solid var(--light);
+      z-index: 99;
+      transform: translateY(-100%);
+      transition: transform 0.2s ease;
+    }
+
+    nav.scrolled ~ .nav-search-mobile-bar {
+      background: rgba(57,57,57,0.97);
+    }
+
+    .nav-search-mobile-bar.open {
+      transform: translateY(0);
+    }
+
+    .nav-search-mobile-bar input {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid currentColor;
+      background: transparent;
+      color: inherit;
+      font-size: 1rem;
+      font-family: inherit;
+      padding: 4px 0;
+      outline: none;
+    }
+
+    .nav-search-mobile-bar input::placeholder { opacity: 0.5; }
+
     /* ─── HERO ─── */
     .hero {
       background: var(--white);
@@ -656,6 +711,9 @@
       .nav-burger { display: flex; }
       .nav-links { display: none; }
       .nav-right { display: none; }
+      .nav-chinese { display: none !important; }
+      .nav-search-mobile-btn { display: flex; }
+      .nav-search-mobile-bar { display: block; }
       .nav-name-text { display: none; }
       .nav-center { display: none; }
       .nav-logo { height: 44px; }
@@ -692,6 +750,9 @@
       <span class="b-open">&#9776;</span>
       <span class="b-close">&#10005;</span>
     </button>
+    <button class="nav-search-mobile-btn" id="navSearchMobileBtn" aria-label="Search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+    </button>
     <a href="#" class="nav-name">
       <img src="logo_name_1.png" alt="袁永熙" class="nav-chinese nav-chinese-light">
       <img src="logo_name_2.png" alt="袁永熙" class="nav-chinese nav-chinese-dark">
@@ -716,6 +777,9 @@
     </div>
   </nav>
   <div class="nav-search-results" id="navSearchResults"></div>
+  <div class="nav-search-mobile-bar" id="navSearchMobileBar">
+    <input type="search" id="navSearchMobileInput" placeholder="Search…" aria-label="Search">
+  </div>
 
   <!-- MOBILE SIDEBAR -->
   <div class="nav-overlay" id="navOverlay"></div>
@@ -973,6 +1037,38 @@
     document.addEventListener('click', e => {
       if (!e.target.closest('.nav-search') && !e.target.closest('#navSearchResults')) {
         closeSearch();
+      }
+    });
+
+    // Mobile search
+    const mobileSearchBtn  = document.getElementById('navSearchMobileBtn');
+    const mobileSearchBar  = document.getElementById('navSearchMobileBar');
+    const mobileSearchInput = document.getElementById('navSearchMobileInput');
+
+    function closeMobileSearch() {
+      mobileSearchBar.classList.remove('open');
+      mobileSearchInput.value = '';
+      searchResults.classList.remove('visible');
+      searchResults.innerHTML = '';
+    }
+
+    mobileSearchBtn.addEventListener('click', () => {
+      const isOpen = mobileSearchBar.classList.toggle('open');
+      if (isOpen) { mobileSearchInput.focus(); }
+      else { closeMobileSearch(); }
+    });
+
+    mobileSearchInput.addEventListener('input', () => runSearch(mobileSearchInput.value));
+
+    mobileSearchInput.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { closeMobileSearch(); mobileSearchBtn.focus(); }
+    });
+
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.nav-search-mobile-btn') &&
+          !e.target.closest('.nav-search-mobile-bar') &&
+          !e.target.closest('#navSearchResults')) {
+        closeMobileSearch();
       }
     });
   </script>
