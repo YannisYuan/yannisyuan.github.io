@@ -448,12 +448,13 @@
       color: inherit;
       text-decoration: underline;
       text-underline-offset: 3px;
-      transition: color 0.15s, opacity 0.15s;
+      text-decoration-color: rgba(17,17,17,0.35);
+      transition: text-decoration-color 0.15s, text-decoration-thickness 0.15s;
     }
 
     .hero-meta a:hover {
-      color: var(--black);
-      opacity: 1;
+      text-decoration-color: var(--black);
+      text-decoration-thickness: 2px;
     }
 
     .meta-row {
@@ -828,7 +829,7 @@
             Swedish House of Finance<br>
             Stockholm School of Economics
           </div>
-          <div class="hero-contact" style="margin-top:0;">
+          <div class="hero-contact" style="margin-top:0; color:var(--black);">
             <div class="meta-row" style="margin:0;">
               <img src="icon_map.png" alt="" class="meta-icon" style="margin-top:3px;">
               <span>Sveavägen 65, 113 83 Stockholm, Sweden</span>
