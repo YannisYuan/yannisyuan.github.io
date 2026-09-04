@@ -446,15 +446,16 @@
 
     .hero-meta a {
       color: inherit;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      text-decoration-color: rgba(17,17,17,0.35);
-      transition: text-decoration-color 0.15s, text-decoration-thickness 0.15s;
+      text-decoration: none;
+      padding: 1px 4px;
+      margin: -1px -4px;
+      border-radius: 3px;
+      transition: background 0.15s, color 0.15s;
     }
 
     .hero-meta a:hover {
-      text-decoration-color: var(--black);
-      text-decoration-thickness: 2px;
+      background: var(--black);
+      color: var(--white);
     }
 
     .meta-row {
