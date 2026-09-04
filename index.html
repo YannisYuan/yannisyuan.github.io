@@ -448,6 +448,12 @@
       color: inherit;
       text-decoration: underline;
       text-underline-offset: 3px;
+      transition: color 0.15s, opacity 0.15s;
+    }
+
+    .hero-meta a:hover {
+      color: var(--black);
+      opacity: 1;
     }
 
     .meta-row {
@@ -725,9 +731,10 @@
 
       /* Hero */
       .hero { padding: calc(var(--nav-height) + 24px) 24px 32px; }
-      .hero-content { flex-direction: column; gap: 24px; }
+      .hero-content { flex-direction: column; gap: 24px; padding: 0; }
       .hero-portrait { width: min(260px, 80vw); }
-      .hero-text h1 { font-size: clamp(1.8rem, 7vw, 2.4rem); }
+      .hero-text { padding-top: 0; }
+      .hero-text h1 { font-size: clamp(1.8rem, 7vw, 2.4rem); font-weight: 700; }
       .hero-affiliation { font-size: 1rem !important; }
       .hero-contact { font-size: 1rem !important; }
 
